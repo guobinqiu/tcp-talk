@@ -8,14 +8,14 @@ tcp/ip是一个网络层的协议，而socket则是对这一协议的一种实�
 
 而客户端socket呢？它需要做两个事情，一个是接收用户的输入并发送给服务端，另一个是接收服务端的输入并显示给用户，而这两个事情是没有先后顺序的，a在输入消息的同时也会收到b发出的消息，所以我们需要在客户端同时开启两个线程，一个线程专门读取用户的输入信息并通过客户端socket发送至对应的服务端socket；另一个线程专门读取服务端socket发送至该客户端socket的信息并显示给用户。
 
-# Example
+### Examples
 
 - CLIENT talk with CLIENT 客户端与客户端通信
 
 - CLIENT talk to SERVER 多个客户端向服务器端通信
 
-# Usage
+### Run
 
-1. 启动服务器 `go run server.go -p 端口号`
+1. 启动服务器 `go run server.go -p 端口`
 
-2. 启动客户端 `go run client.go -h 主机地址 -p 端口号` (可以启多个)
+2. 启动客户端 `go run client.go -h 服务器地址 -p 服务器端口` (可以启多个)

@@ -51,7 +51,7 @@ func handleConn(conn net.Conn, conns connList) {
 		//read from current client
 		n, err := conn.Read(bs)
 
-		//occurred when the client was closed
+		//occurred when current client was closed
 		//before: server: CLOSE_WAIT, client: FIN_WAIT_2
 		//do close to avoid CLOSE_WAIT
 		//after: client: TIME_WAIT
@@ -63,18 +63,16 @@ func handleConn(conn net.Conn, conns connList) {
 			break
 		}
 
-		//write to other clients (exclude current client)
+		//write to all clients (include current client)
 		for out := range conns {
-			if out != conn {
-				_, err := out.Write(bs[:n])
+			_, err := out.Write(bs[:n])
 
-				//occurred when the client was closed
-				if err != nil {
-					log.Println(err)
-					out.Close()
-					delete(conns, out)
-					continue
-				}
+			//occurred when the client was closed
+			if err != nil {
+				log.Println(err)
+				out.Close()
+				delete(conns, out)
+				continue
 			}
 		}
 	}

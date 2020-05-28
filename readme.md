@@ -18,4 +18,4 @@ tcp/ip是一个网络层的协议，而socket则是对这一协议的一种实�
 
 1. 启动服务器 `go run server.go -p 端口号`
 
-2. 启动客户端 `go run client.go -h 主机地址 -p 端口号` (可以多个)
+2. 启动客户端 `go run client.go -h 主机地址 -p 端口号` (可以启多个)

@@ -10,8 +10,7 @@ import (
 
 var port int
 
-//map is not thread safe, you need mutex lock,
-//to keep the code simple i didn't use lock here.
+//Note that map here is thread unsafe, this demo is just to keep the code simple
 type connList map[net.Conn]net.Conn
 
 func init() {

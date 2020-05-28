@@ -10,9 +10,9 @@ tcp/ip是一个网络层的协议，而socket则是对这一协议的一种实�
 
 ### Examples
 
-- CLIENT talk with CLIENT 客户端与客户端通信
+- client-client 客户端与客户端通信
 
-- CLIENT talk to SERVER 多个客户端向服务器端通信
+- client-server 多客户端向服务器端通信
 
 ### Run
 

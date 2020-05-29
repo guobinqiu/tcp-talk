@@ -43,7 +43,7 @@ func main() {
 	}
 }
 
-//read from client and write to all clients
+//read from current client and write to all clients
 func handleConn(conn net.Conn, conns connList) {
 	bs := make([]byte, 1024)
 	for {
